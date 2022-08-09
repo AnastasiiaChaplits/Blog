@@ -14,6 +14,12 @@ app.get("/posts", (req, res) => {
   res.send(posts);
 });
 
+app.post("/events", (req, res) => {
+  console.log("Received Event", req.body.type);
+
+  res.send({});
+});
+
 app.post("/posts", async (req, res) => {
   const id = randomBytes(4).toString("hex");
   const { title } = req.body;
@@ -34,12 +40,6 @@ app.post("/posts", async (req, res) => {
   res.status(201).send(posts[id]);
 });
 
-app.post("/events", (req, res) => {
-  console.log("Received Event", req.body.type);
-
-  res.send({});
-});
-
-app.listen(4000, () => {
-  console.log("Listening on 4000");
+app.listen(4006, () => {
+  console.log("Listening on 4006");
 });
